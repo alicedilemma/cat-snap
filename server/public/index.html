@@ -10,6 +10,54 @@
 </head>
 <body>
   <div id="app"></div>
+
+  <div id="map"></div>
+
   <script src="/bundle.js"></script>
+  
+  <script>
+    // GOOGLE MAPS
+
+    function initMap() {
+      const auckland = {lat: -36.8485, lng: 174.7633}
+      // map options
+      const options = {
+        zoom: 14,
+        center: auckland
+      }
+      // new map
+      const map = new google.maps.Map(document.getElementById('map'), options)
+      
+      // addMarker function
+      const addMarker = (props) => {
+        const marker = new google.maps.Marker({ 
+        position: props.coords,
+        map: map,
+        icon: {
+          path: google.maps.SymbolPath.BACKWARD_OPEN_ARROW,
+          scale: 8
+        }
+       })
+       const infoWindow = new google.maps.InfoWindow({
+         content: props.content
+       })
+       marker.addListener('click', () => {
+         infoWindow.open(map, marker)
+       })
+      }
+      
+
+      addMarker({ 
+        coords: {
+          lat: -36.864174,
+          lng: 174.7737853
+        },
+        content: '<h1>Cat</h1>'
+      })
+    }
+
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8DpHyEFmSSkqd3fkL8F0L7ocbPLqQbRA&callback=initMap"
+  type="text/javascript"></script>
 </body>
 </html>
