@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Map from './Map'
+
 class Snap extends React.Component {
   tags = this.props.snapData.tags.map(tag => {
     return <li key={tag}>{tag}</li>
@@ -24,9 +26,6 @@ class Snap extends React.Component {
           <ul>
             {this.tags}
           </ul>
-        </div>
-        <div className="snap-location">
-          <img className="snap-image" src="http://humaan.com/wp-content/uploads/2014/11/google-maps-basic-marker.png" />
         </div>
       </div>
     )
