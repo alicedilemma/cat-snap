@@ -1,21 +1,21 @@
 import React from 'react'
 
-import Map from './Map'
+import MapContainer from './MapContainer'
 
 class Snap extends React.Component {
   tags = this.props.snapData.tags.map(tag => {
     return <li key={tag}>{tag}</li>
   })
 
-  componentDidMount () {
+  componentDidMount() {
     console.log(this.props)
   }
 
-  render () {
+  render() {
     return (
       <div className="snap">
         <h1>{this.props.snapData.name}</h1>
-        <img className="snap-image" src={this.props.snapData.image}/>
+        <img className="snap-image" src={this.props.snapData.image} />
         <div className="snap-stats">
           <h3>Friendliness: {this.props.snapData.friendliness}</h3>
         </div>
@@ -26,6 +26,9 @@ class Snap extends React.Component {
           <ul>
             {this.tags}
           </ul>
+        </div>
+        <div className="map">
+          <MapContainer />
         </div>
       </div>
     )
