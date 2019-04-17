@@ -14,63 +14,11 @@
 </head>
 
 <body>
+
   <div id="app"></div>
 
-  <!-- <div id="map"></div> -->
-
   <script src="/bundle.js"></script>
-
-  <!-- <script>
-    // GOOGLE MAPS
-
-    const testSnapData = {
-  id: 1,
-  name: 'Blossom',
-  image: 'http://placekitten.com/300/200',
-  time: new Date(),
-  story: 'I ran into this fluffy friend on my way home from work. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-  friendliness: 3,
-  tags: ['grey', 'independent'],
-  mapCoords: {
-    lat: -36.864174,
-    lng: 174.7737853
-  },
-  mapInfo: '<h1>Cat</h1>'
-}
-
-    function initMap() {
-      const auckland = { lat: -36.8485, lng: 174.7633 }
-      // map options
-      const options = {
-        zoom: 14,
-        center: auckland
-      }
-      // new map
-      const map = new google.maps.Map(document.getElementById('map'), options)
-
-      // addMarker function
-      const addMarker = (snap) => {
-        const marker = new google.maps.Marker({
-          position: snap.mapCoords,
-          map: map,
-          icon: {
-            path: google.maps.SymbolPath.BACKWARD_OPEN_ARROW,
-            scale: 8
-          }
-        })
-        const infoWindow = new google.maps.InfoWindow({
-          content: snap.mapInfo
-        })
-        marker.addListener('click', () => {
-          infoWindow.open(map, marker)
-        })
-      }
-
-
-      addMarker(testSnapData)
-    }
-
-  </script> -->
+  
 </body>
 
 </html>

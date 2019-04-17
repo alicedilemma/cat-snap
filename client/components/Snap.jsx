@@ -3,15 +3,20 @@ import React from 'react'
 import MapContainer from './MapContainer'
 
 class Snap extends React.Component {
-  tags = this.props.snapData.tags.map(tag => {
+  tagsData=[ 'cool', 'grey' ]
+  tags = this.tagsData.map(tag => {
     return <li key={tag}>{tag}</li>
   })
 
-  componentDidMount() {
-    console.log(this.props)
+  componentDidMount () {
+    console.log('snap component props:', this.props)
   }
 
-  render() {
+  componentDidUpdate () {
+    console.log('snap component props:', this.props)
+  }
+
+  render () {
     return (
       <div className="snap">
         <h1>{this.props.snapData.name}</h1>
@@ -28,7 +33,7 @@ class Snap extends React.Component {
           </ul>
         </div>
         <div className="map">
-          <MapContainer />
+          <MapContainer position={{ lat: this.props.snapData.lat, lng: this.props.snapData.lng }} />
         </div>
       </div>
     )

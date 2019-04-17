@@ -3,17 +3,35 @@ import React from 'react'
 import Snap from './Snap'
 import Header from './Header'
 
-import testSnapData from '../../data/testData'
+import { getSnaps } from '../api'
 
-const App = () => {
-  return (
-    <React.Fragment>
-      <Header />
-      <div className="content">
-        <Snap snapData={ testSnapData } />
-      </div>
-    </React.Fragment>
-  )
+// import testSnapData from '../../data/testData'
+
+class App extends React.Component {
+  state = {
+    snap: ''
+  }
+
+  componentDidMount () {
+    getSnaps()
+      .then(snaps => {
+        console.log('app.jsx', snaps)
+        this.setState({
+          snap: snaps[0]
+        })
+      })
+  }
+
+  render () {
+    return (
+      <React.Fragment>
+        <Header />
+        <div className="content">
+          <Snap snapData={ this.state.snap } />
+        </div>
+      </React.Fragment>
+    )
+  }
 }
 
 export default App

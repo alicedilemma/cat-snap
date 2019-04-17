@@ -1,16 +1,19 @@
 import React from 'react'
 
-import { withGoogleMap, GoogleMap, InfoWindow, Marker } from "react-google-maps"
+import { withGoogleMap, GoogleMap, InfoWindow, Marker } from 'react-google-maps'
 
 const InitialMap = withGoogleMap(props => {
+  // create map markers
+  const mapMarkers = props.markers.map(marker => <Marker key={marker.position} position={marker.position} />)
+
   return (
-  <GoogleMap
-    ref={props.onMapLoad}
-    defaultZoom={8}
-    defaultCenter={{ lat: -34.397, lng: 150.644 }}
-  >
-    <Marker position={{ lat: -34.397, lng: 150.644 }} />
-  </GoogleMap>
+    <GoogleMap
+      ref={props.onMapLoad}
+      defaultZoom={16}
+      defaultCenter={props.markers[0].position}
+    >
+      {mapMarkers}
+    </GoogleMap>
   )
 })
 
