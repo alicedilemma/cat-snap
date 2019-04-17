@@ -6,7 +6,25 @@ class NewSnapForm extends React.Component {
   state = {
     message: '',
     name: '',
-    story: ''
+    story: '',
+    friendliness: '',
+    lat: '',
+    lng: ''
+  }
+
+  getGeoLocation = (callback) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          this.setState({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          }, callback)
+        }
+      )
+    } else {
+      console.log('geolocation did not work')
+    }
   }
 
   changeHandler = e => {
@@ -19,14 +37,15 @@ class NewSnapForm extends React.Component {
 
   submitHandler = e => {
     e.preventDefault()
-    // final validation before submitting
-    addSnap({
-      name: this.state.name,
-      story: this.state.story
-    })
-      .then(result => {
-        console.log('result', result)
+    this.getGeoLocation(() => {
+      addSnap({
+        name: this.state.name,
+        story: this.state.story,
+        friendliness: this.state.friendliness,
+        lat: this.state.lat,
+        lng: this.state.lng
       })
+    })
   }
 
   render () {
@@ -46,6 +65,14 @@ class NewSnapForm extends React.Component {
             onChange={this.changeHandler}
             placeholder='Story'
             name='story' />
+          <br />
+          <input
+            type='text'
+            value={this.state.friendliness}
+            onChange={this.changeHandler}
+            placeholder='How friendly? (1 to 10)'
+            name='friendliness' />
+          <br />
           <input
             type='submit'
             value='Add new snap!'
