@@ -2,6 +2,7 @@ import React from 'react'
 
 import Snap from './Snap'
 import Header from './Header'
+import NewSnapForm from './NewSnapForm'
 
 import { getSnaps } from '../api'
 
@@ -9,13 +10,15 @@ import { getSnaps } from '../api'
 
 class App extends React.Component {
   state = {
-    snap: ''
+    snap: '',
+    displaySnap: false,
+    displayNewSnapFrom: true
   }
 
   componentDidMount () {
     getSnaps()
       .then(snaps => {
-        console.log('app.jsx', snaps)
+        // console.log('app.jsx', snaps)
         this.setState({
           snap: snaps[0]
         })
@@ -27,7 +30,8 @@ class App extends React.Component {
       <React.Fragment>
         <Header />
         <div className="content">
-          <Snap snapData={ this.state.snap } />
+          {this.state.displaySnap && <Snap snapData={ this.state.snap } />}
+          {this.state.displayNewSnapFrom && <NewSnapForm />}
         </div>
       </React.Fragment>
     )

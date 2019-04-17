@@ -3,9 +3,15 @@ const config = require('../../knexfile')[environment]
 const connection = require('knex')(config)
 
 module.exports = {
-  getSnaps
+  getSnaps,
+  addSnap
 }
 
 function getSnaps (db = connection) {
   return db('snap').select()
+}
+
+function addSnap (newSnap, db = connection) {
+  return db('snap')
+    .insert(newSnap)
 }
