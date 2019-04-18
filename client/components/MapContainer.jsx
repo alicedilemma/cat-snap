@@ -6,8 +6,8 @@ class MapContainer extends React.Component {
   state = {
     markers: [{
       position: {
-        lat: this.props.position.lat,
-        lng: this.props.position.lng
+        lat: Number(this.props.position.lat),
+        lng: Number(this.props.position.lng)
       }
     }]
   }
@@ -18,8 +18,8 @@ class MapContainer extends React.Component {
       this.setState({
         markers: [{
           position: {
-            lat: this.props.position.lat,
-            lng: this.props.position.lng
+            lat: Number(this.props.position.lat),
+            lng: Number(this.props.position.lng)
           } 
         }]
       })

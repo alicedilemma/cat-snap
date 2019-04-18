@@ -11,8 +11,8 @@ import { getSnaps } from '../api'
 class App extends React.Component {
   state = {
     snap: '',
-    displaySnap: false,
-    displayNewSnapFrom: true
+    displaySnap: true,
+    displayNewSnapForm: false
   }
 
   componentDidMount () {
@@ -31,7 +31,7 @@ class App extends React.Component {
         <Header />
         <div className="content">
           {this.state.displaySnap && <Snap snapData={ this.state.snap } />}
-          {this.state.displayNewSnapFrom && <NewSnapForm />}
+          {this.state.displayNewSnapForm && <NewSnapForm />}
         </div>
       </React.Fragment>
     )
