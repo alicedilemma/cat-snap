@@ -1,5 +1,9 @@
 import React from 'react'
 
+// bulma components
+import { Heading } from 'react-bulma-components/full'
+
+// components
 import MapContainer from './MapContainer'
 
 class Snap extends React.Component {
@@ -19,7 +23,7 @@ class Snap extends React.Component {
   render () {
     return (
       <div className="snap">
-        <h1>{this.props.snapData.name}</h1>
+        <Heading>{this.props.snapData.name}</Heading>
         <img className="snap-image" src={this.props.snapData.image} />
         <div className="snap-stats">
           <h3>Friendliness: {this.props.snapData.friendliness}</h3>

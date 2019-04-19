@@ -1,12 +1,23 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+
+// bulma components
+import { Hero, Heading, Container } from 'react-bulma-components/full'
 
 class Header extends React.Component {
   render () {
     return (
-      <div className="header">
-        <Link to="/"><h1>CatSnap</h1></Link>
-      </div>
+      <Hero color="primary">
+        <Hero.Body>
+          <Container>
+            <Heading size={1}>
+              CatSnap
+            </Heading>
+            <Heading subtitle size={3}>
+              Snap a cat
+            </Heading>
+          </Container>
+        </Hero.Body>
+      </Hero>
     )
   }
 }

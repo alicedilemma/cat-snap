@@ -1,5 +1,9 @@
 import React from 'react'
 
+// bulma components
+import { Field, Label, Control, Input } from 'react-bulma-components/full'
+
+// api
 import { addSnap } from '../api'
 
 class NewSnapForm extends React.Component {
@@ -49,26 +53,33 @@ class NewSnapForm extends React.Component {
   }
 
   render () {
+    const { message, name, story, friendliness } = this.state
     return (
       <div>
         <form onSubmit={this.submitHandler}>
-          <input
-            type='text'
-            value={this.state.name}
-            onChange={this.changeHandler}
-            placeholder='Cat&apos;s name (if known)'
-            name='name' />
+          {/* <Field>
+            <Label>Name</Label>
+            <Control>
+              <Input
+                type='text'
+                value={name}
+                onChange={this.changeHandler}
+                placeholder='Cat&apos;s name (if known)'
+                name='name' />
+            </Control>
+          </Field> */}
+
           <br />
           <input
             type='text'
-            value={this.state.story}
+            value={story}
             onChange={this.changeHandler}
             placeholder='Story'
             name='story' />
           <br />
           <input
             type='text'
-            value={this.state.friendliness}
+            value={friendliness}
             onChange={this.changeHandler}
             placeholder='How friendly? (1 to 10)'
             name='friendliness' />
@@ -78,7 +89,7 @@ class NewSnapForm extends React.Component {
             value='Add new snap!'
           />
         </form>
-        <p>{this.state.message}</p>
+        <p>{message}</p>
       </div>
     )
   }
