@@ -78,7 +78,9 @@ class NewSnapForm extends React.Component {
             name='story' />
           <br />
           <input
-            type='text'
+            type='number'
+            min='1'
+            max='10'
             value={friendliness}
             onChange={this.changeHandler}
             placeholder='How friendly? (1 to 10)'
