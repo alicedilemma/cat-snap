@@ -1,7 +1,7 @@
 import React from 'react'
 
 // bulma components
-import { Field, Label, Control, Input } from 'react-bulma-components/full'
+import { Form, Button } from 'react-bulma-components/full'
 
 // api
 import { addSnap } from '../api'
@@ -52,44 +52,51 @@ class NewSnapForm extends React.Component {
     })
   }
 
-  render () {
+  render() {
+    const { Label, Input, Field, Control, Textarea } = Form
     const { message, name, story, friendliness } = this.state
     return (
       <div>
         <form onSubmit={this.submitHandler}>
-          {/* <Field>
-            <Label>Name</Label>
+          <Field>
+            <Label>Name of cat (if known)</Label>
             <Control>
               <Input
                 type='text'
                 value={name}
                 onChange={this.changeHandler}
-                placeholder='Cat&apos;s name (if known)'
+                placeholder='Name'
                 name='name' />
             </Control>
-          </Field> */}
-
-          <br />
-          <input
-            type='text'
-            value={story}
-            onChange={this.changeHandler}
-            placeholder='Story'
-            name='story' />
-          <br />
-          <input
-            type='number'
-            min='1'
-            max='10'
-            value={friendliness}
-            onChange={this.changeHandler}
-            placeholder='How friendly? (1 to 10)'
-            name='friendliness' />
-          <br />
-          <input
-            type='submit'
-            value='Add new snap!'
-          />
+          </Field>
+          <Field>
+            <Label>Story of the snap</Label>
+            <Control>
+              <Textarea
+                value={story}
+                onChange={this.changeHandler}
+                placeholder='Story'
+                name='story' />
+            </Control>
+          </Field>
+          <Field>
+            <Label>How friendly? (1 = very independent, 10 = extrememly cuddly)</Label>
+            <Control>
+              <Input
+                type='number'
+                min='1'
+                max='10'
+                value={friendliness}
+                onChange={this.changeHandler}
+                placeholder='5'
+                name='friendliness' />
+            </Control>
+          </Field>
+          <Field>
+            <Control>
+              <Button type="primary">Add snap!</Button>
+            </Control>
+          </Field>
         </form>
         <p>{message}</p>
       </div>
