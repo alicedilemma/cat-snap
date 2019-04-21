@@ -4,6 +4,7 @@ import React from 'react'
 import { Columns } from 'react-bulma-components/full'
 
 // components
+import Home from './Home'
 import Snap from './Snap'
 import Header from './Header'
 import Footer from './Footer'
@@ -15,8 +16,9 @@ import { getSnaps } from '../api'
 export default class App extends React.Component {
   state = {
     snap: '',
+    displayHomeMap: true,
     displaySnap: false,
-    displayNewSnapForm: true,
+    displayNewSnapForm: false,
     recievedData: false
   }
 
@@ -26,6 +28,7 @@ export default class App extends React.Component {
         // console.log('app.jsx', snaps)
         this.setState({
           snap: snaps[0],
+          snaps: snaps,
           recievedData: true
         })
       })
@@ -40,6 +43,7 @@ export default class App extends React.Component {
           </Columns.Column>
           <Columns.Column size={8}>
             <div className="content">
+              {this.state.displayHomeMap && this.state.recievedData && <Home snaps={ this.state.snaps } />}
               {this.state.displaySnap && this.state.recievedData && <Snap snapData={ this.state.snap } />}
               {this.state.displayNewSnapForm && <NewSnapForm />}
             </div>
