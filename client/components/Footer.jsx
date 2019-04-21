@@ -3,7 +3,7 @@ import React from 'react'
 // bulma components
 import { Footer as BulmaFooter, Container, Content } from 'react-bulma-components/full'
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <BulmaFooter>
       <Container>
@@ -18,3 +18,5 @@ export const Footer = () => {
     </BulmaFooter>
   )
 }
+
+export default Footer

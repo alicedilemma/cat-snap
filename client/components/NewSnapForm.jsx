@@ -52,7 +52,7 @@ class NewSnapForm extends React.Component {
     })
   }
 
-  render() {
+  render () {
     const { Label, Input, Field, Control, Textarea } = Form
     const { message, name, story, friendliness } = this.state
     return (

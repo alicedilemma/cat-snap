@@ -20,7 +20,7 @@ class MapContainer extends React.Component {
           position: {
             lat: Number(this.props.position.lat),
             lng: Number(this.props.position.lng)
-          } 
+          }
         }]
       })
     }

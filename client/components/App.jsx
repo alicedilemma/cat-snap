@@ -6,7 +6,7 @@ import { Columns } from 'react-bulma-components/full'
 // components
 import Snap from './Snap'
 import Header from './Header'
-import { Footer } from './Footer'
+import Footer from './Footer'
 import NewSnapForm from './NewSnapForm'
 
 // api
