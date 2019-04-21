@@ -19,19 +19,40 @@ export default class App extends React.Component {
     displayHomeMap: true,
     displaySnap: false,
     displayNewSnapForm: false,
-    recievedData: false
+    recievedData: false,
+    currentPosition: { lat: -36.8485, lng: 174.7633 }
   }
 
   componentDidMount () {
     getSnaps()
       .then(snaps => {
-        // console.log('app.jsx', snaps)
-        this.setState({
-          snap: snaps[0],
-          snaps: snaps,
-          recievedData: true
+        this.getGeoLocation(() => {
+          this.setState({
+            snap: snaps[0],
+            snaps: snaps,
+            recievedData: true
+          })
         })
+        // console.log('app.jsx', snaps)
       })
+  }
+
+  getGeoLocation = (callback) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          this.setState({
+            currentPosition: {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            }
+          }, callback)
+        }
+      )
+    } else {
+      console.log('geolocation did not work')
+      callback()
+    }
   }
 
   render () {
@@ -43,8 +64,8 @@ export default class App extends React.Component {
           </Columns.Column>
           <Columns.Column size={8}>
             <div className="content">
-              {this.state.displayHomeMap && this.state.recievedData && <Home snaps={ this.state.snaps } />}
-              {this.state.displaySnap && this.state.recievedData && <Snap snapData={ this.state.snap } />}
+              {this.state.displayHomeMap && this.state.recievedData && <Home snaps={this.state.snaps} currentPosition={this.state.currentPosition} />}
+              {this.state.displaySnap && this.state.recievedData && <Snap snapData={this.state.snap} />}
               {this.state.displayNewSnapForm && <NewSnapForm />}
             </div>
 

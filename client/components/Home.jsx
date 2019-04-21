@@ -8,7 +8,8 @@ import HomeMapContainer from './HomeMapContainer'
 
 export default class Home extends React.Component {
   state = {
-    snaps: this.props.snaps
+    snaps: this.props.snaps,
+    currentPosition: this.props.currentPosition
   }
 
   render () {
@@ -16,7 +17,7 @@ export default class Home extends React.Component {
       <div className="home">
         <Heading>Home</Heading>
         <div className="map">
-          <HomeMapContainer snaps={this.state.snaps} />
+          <HomeMapContainer currentPosition={this.state.currentPosition} snaps={this.state.snaps} />
         </div>
       </div>
     )

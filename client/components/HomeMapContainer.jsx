@@ -7,7 +7,8 @@ class MapContainer extends React.Component {
     snaps: this.props.snaps.map(snap => {
       snap.showInfo = false
       return snap
-    })
+    }),
+    currentPosition: this.props.currentPosition
   }
 
   handleMarkerClick = targetSnap => {
@@ -43,6 +44,7 @@ class MapContainer extends React.Component {
             <div style={{ height: '100%' }} />
           }
           snaps={this.state.snaps}
+          currentPosition={this.state.currentPosition}
           onMarkerClick={this.handleMarkerClick}
           onMarkerClose={this.handleMarkerClose}
         />
