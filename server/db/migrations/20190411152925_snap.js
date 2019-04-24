@@ -2,7 +2,7 @@ exports.up = (knex, Promise) => {
   return knex.schema.createTable('snap', table => {
     table.increments('id').primary()
     table.string('name')
-    table.string('image')
+    table.binary('image')
     table.string('story')
     table.integer('friendliness')
     table.integer('lat')

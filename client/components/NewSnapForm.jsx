@@ -12,6 +12,7 @@ class NewSnapForm extends React.Component {
     name: '',
     story: '',
     friendliness: '',
+    image: '',
     lat: '',
     lng: ''
   }
@@ -46,6 +47,7 @@ class NewSnapForm extends React.Component {
         name: this.state.name,
         story: this.state.story,
         friendliness: this.state.friendliness,
+        image: this.state.image,
         lat: this.state.lat,
         lng: this.state.lng
       })
@@ -93,10 +95,17 @@ class NewSnapForm extends React.Component {
             </Control>
           </Field>
           <Field>
+            <Input
+              type="file"
+              name="image"
+              accept="image/*;capture=camera" />
+          </Field>
+          <Field>
             <Control>
               <Button type="primary">Add snap!</Button>
             </Control>
           </Field>
+
         </form>
         <p>{message}</p>
       </div>

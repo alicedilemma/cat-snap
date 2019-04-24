@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 // bulma components
 import { Columns } from 'react-bulma-components/full'
@@ -13,12 +14,9 @@ import NewSnapForm from './NewSnapForm'
 // api
 import { getSnaps } from '../api'
 
-export default class App extends React.Component {
+class App extends React.Component {
   state = {
     snap: '',
-    displayHomeMap: true,
-    displaySnap: false,
-    displayNewSnapForm: false,
     recievedData: false,
     currentPosition: { lat: -36.8485, lng: 174.7633 }
   }
@@ -56,6 +54,8 @@ export default class App extends React.Component {
   }
 
   render () {
+    const { activePage } = this.props
+    const { recievedData, snap, snaps, currentPosition } = this.state
     return (
       <React.Fragment>
         <Header />
@@ -64,9 +64,9 @@ export default class App extends React.Component {
           </Columns.Column>
           <Columns.Column size={8}>
             <div className="content">
-              {this.state.displayHomeMap && this.state.recievedData && <Home snaps={this.state.snaps} currentPosition={this.state.currentPosition} />}
-              {this.state.displaySnap && this.state.recievedData && <Snap snapData={this.state.snap} />}
-              {this.state.displayNewSnapForm && <NewSnapForm />}
+              {activePage === 'home' && recievedData && <Home snaps={snaps} currentPosition={currentPosition} />}
+              {activePage === 'snap' && recievedData && <Snap snapData={snap} />}
+              {activePage === 'add' && <NewSnapForm />}
             </div>
 
           </Columns.Column>
@@ -78,3 +78,11 @@ export default class App extends React.Component {
     )
   }
 }
+
+function mapStateToProps (state) {
+  return {
+    activePage: state.nav.activePage
+  }
+}
+
+export default connect(mapStateToProps)(App)
