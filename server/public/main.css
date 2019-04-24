@@ -1,25 +1,16 @@
-/* body {
-  font-family: 'Raleway', sans-serif;
-}
-
-h1 {
-  font-family: 'Montserrat', sans-serif;
-} */
-
 a {
   text-decoration: none;
 }
-
 
 .map {
   height: 400px;
 }
 
-/* SNAP */
-
-.snap-image {
-  /* width: 100%; */
+.hero {
+  background-color: #dcdcdc;
+  text-align: center;
 }
 
-
-
+.content {
+  margin: 20px 0 20px 0;
+}

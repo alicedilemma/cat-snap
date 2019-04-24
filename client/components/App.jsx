@@ -68,7 +68,6 @@ class App extends React.Component {
               {activePage === 'snap' && recievedData && <Snap snapData={snap} />}
               {activePage === 'add' && <NewSnapForm />}
             </div>
-
           </Columns.Column>
           <Columns.Column size={2}>
           </Columns.Column>

@@ -4,12 +4,12 @@ import { connect } from 'react-redux'
 import { navigate } from '../actions'
 
 // bulma components
-import { Hero, Heading, Container } from 'react-bulma-components/full'
+import { Hero, Heading, Container, Navbar } from 'react-bulma-components/full'
 
 const Header = props => {
   const { dispatch } = props
   return (
-    <Hero color="primary">
+    <Hero className='hero'>
       <Hero.Body>
         <Container>
           <Heading size={1}>
@@ -18,13 +18,15 @@ const Header = props => {
           <Heading subtitle size={3}>
               Snap a cat
           </Heading>
-          <Heading subtitle size={6}>
-            <a onClick={() => dispatch(navigate('home'))}>HOME </a>
-            <a onClick={() => dispatch(navigate('snap'))}>SNAP </a>
-            <a onClick={() => dispatch(navigate('add'))}>ADD </a>
-          </Heading>
         </Container>
       </Hero.Body>
+      <Container>
+        <Navbar>
+          <Navbar.Item renderAs='a' onClick={() => dispatch(navigate('home'))}>HOME</Navbar.Item>
+          <Navbar.Item renderAs='a' onClick={() => dispatch(navigate('snap'))}>SNAP</Navbar.Item>
+          <Navbar.Item renderAs='a' onClick={() => dispatch(navigate('add'))}>ADD</Navbar.Item>
+        </Navbar>
+      </Container>
     </Hero>
   )
 }
