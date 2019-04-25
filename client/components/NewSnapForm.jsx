@@ -40,17 +40,24 @@ class NewSnapForm extends React.Component {
     })
   }
 
+  uploadHandler = e => {
+    const file = e.target.files[0]
+    this.setState({
+      image: file
+    })
+  }
+
   submitHandler = e => {
     e.preventDefault()
     this.getGeoLocation(() => {
-      addSnap({
-        name: this.state.name,
-        story: this.state.story,
-        friendliness: this.state.friendliness,
-        image: this.state.image,
-        lat: this.state.lat,
-        lng: this.state.lng
-      })
+      let data = new FormData()
+      data.append('file', this.state.image)
+      data.append('name', this.state.name)
+      data.append('story', this.state.story)
+      data.append('friendliness', this.state.friendliness)
+      data.append('lat', this.state.lat)
+      data.append('lng', this.state.lng)
+      addSnap(data)
     })
   }
 
@@ -95,10 +102,11 @@ class NewSnapForm extends React.Component {
             </Control>
           </Field>
           <Field>
-            <Input
+            <input
               type="file"
               name="image"
-              accept="image/*;capture=camera" />
+              accept="image/*;capture=camera"
+              onChange={this.uploadHandler} />
           </Field>
           <Field>
             <Control>

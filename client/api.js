@@ -16,7 +16,7 @@ export function addSnap (newSnap) {
     .post(snapUrl)
     .send(newSnap)
     .then(res => {
-      console.log('api', res.body)
+      // console.log('api', res.body)
       return res.body
     })
 }
