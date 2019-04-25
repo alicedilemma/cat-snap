@@ -54,7 +54,7 @@ class App extends React.Component {
   }
 
   render () {
-    const { activePage } = this.props
+    const { activePage, activeSnap } = this.props
     const { recievedData, snap, snaps, currentPosition } = this.state
     return (
       <React.Fragment>
@@ -65,7 +65,7 @@ class App extends React.Component {
           <Columns.Column size={8}>
             <div className="content">
               {activePage === 'home' && recievedData && <Home snaps={snaps} currentPosition={currentPosition} />}
-              {activePage === 'snap' && recievedData && <Snap snapData={snap} />}
+              {activePage === 'snap' && recievedData && <Snap snapData={snaps[activeSnap - 1]} />}
               {activePage === 'add' && <NewSnapForm />}
             </div>
           </Columns.Column>
@@ -80,7 +80,8 @@ class App extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    activePage: state.nav.activePage
+    activePage: state.nav.activePage,
+    activeSnap: state.nav.activeSnap
   }
 }
 
