@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { navigate } from '../actions'
+import { navigate, openSnap } from '../actions'
 
 // bulma components
 import { Hero, Heading, Container, Navbar } from 'react-bulma-components/full'
@@ -23,7 +23,7 @@ const Header = props => {
       <Container>
         <Navbar>
           <Navbar.Item renderAs='a' onClick={() => dispatch(navigate('home'))}>HOME</Navbar.Item>
-          <Navbar.Item renderAs='a' onClick={() => dispatch(navigate('snap'))}>SNAP</Navbar.Item>
+          <Navbar.Item renderAs='a' onClick={() => dispatch(openSnap(1))}>SNAP</Navbar.Item>
           <Navbar.Item renderAs='a' onClick={() => dispatch(navigate('add'))}>ADD</Navbar.Item>
         </Navbar>
       </Container>
