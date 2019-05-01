@@ -11,6 +11,7 @@ import Header from './Header'
 import Footer from './Footer'
 import NewSnapForm from './NewSnapForm'
 import Register from './Register'
+import SignIn from './SignIn'
 
 // api
 import { getSnaps } from '../api'
@@ -65,7 +66,8 @@ class App extends React.Component {
           </Columns.Column>
           <Columns.Column size={8}>
             <div className="content">
-              <Register />
+              {/* <Register /> */}
+              <SignIn />
               {activePage === 'home' && recievedData && <Home snaps={snaps} currentPosition={currentPosition} />}
               {activePage === 'snap' && recievedData && <Snap snapData={snaps[activeSnap - 1]} />}
               {activePage === 'add' && <NewSnapForm />}
