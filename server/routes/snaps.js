@@ -25,9 +25,9 @@ router.post('/', (req, res) => {
       console.error('Error', err)
       throw err
     }
-    console.log(files.file)
-    const image = fs.readFileSync(files.file.File.path, { encoding: 'base64' })
-    console.log('binary?', image)
+    console.log(files.image.path)
+    // const image = fs.readFileSync(files.file.File.path, { encoding: 'base64' })
+    // console.log('binary?', image)
     // const { name, story, friendliness, lat, lng } = fields
     // const snap = {
     //   name,

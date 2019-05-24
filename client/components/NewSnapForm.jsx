@@ -51,7 +51,7 @@ class NewSnapForm extends React.Component {
     e.preventDefault()
     this.getGeoLocation(() => {
       let data = new FormData()
-      data.append('file', this.state.image)
+      data.append('image', this.state.image)
       data.append('name', this.state.name)
       data.append('story', this.state.story)
       data.append('friendliness', this.state.friendliness)
