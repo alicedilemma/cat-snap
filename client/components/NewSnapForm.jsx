@@ -1,5 +1,9 @@
 import React from 'react'
 
+// components
+import CameraContainer from './CameraContainer'
+import PhotoPreview from './PhotoPreview'
+
 // bulma components
 import { Form, Button } from 'react-bulma-components/full'
 
@@ -14,7 +18,8 @@ class NewSnapForm extends React.Component {
     friendliness: '',
     image: '',
     lat: '',
-    lng: ''
+    lng: '',
+    cameraDisplay : 'camera' // camera or preview
   }
 
   getGeoLocation = (callback) => {
@@ -40,10 +45,18 @@ class NewSnapForm extends React.Component {
     })
   }
 
-  uploadHandler = e => {
-    const file = e.target.files[0]
+  onTakePhoto = (dataUri) => {
+    console.log(dataUri)
     this.setState({
-      image: file
+      image: dataUri,
+      cameraDisplay: 'preview'
+    })
+  }
+
+  discardPhoto = () => {
+    this.setState({
+      image: '',
+      cameraDisplay: 'camera'
     })
   }
 
@@ -63,9 +76,16 @@ class NewSnapForm extends React.Component {
 
   render () {
     const { Label, Input, Field, Control, Textarea } = Form
-    const { message, name, story, friendliness } = this.state
+    const { message, name, story, friendliness, cameraDisplay, image } = this.state
     return (
       <div>
+        {cameraDisplay === 'camera' && <CameraContainer 
+          onTakePhoto={this.onTakePhoto}
+        />}
+        {cameraDisplay === 'preview' && <PhotoPreview 
+          image={image}
+          discardPhoto={this.discardPhoto}
+        />}
         <form onSubmit={this.submitHandler}>
           <Field>
             <Label>Name of cat (if known)</Label>
@@ -100,13 +120,6 @@ class NewSnapForm extends React.Component {
                 placeholder='5'
                 name='friendliness' />
             </Control>
-          </Field>
-          <Field>
-            <input
-              type="file"
-              name="image"
-              accept="image/*;capture=camera"
-              onChange={this.uploadHandler} />
           </Field>
           <Field>
             <Control>
