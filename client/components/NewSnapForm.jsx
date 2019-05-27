@@ -49,7 +49,8 @@ class NewSnapForm extends React.Component {
     console.log(dataUri)
     this.setState({
       image: dataUri,
-      cameraDisplay: 'preview'
+      cameraDisplay: 'preview',
+      message: ''
     })
   }
 
@@ -62,16 +63,23 @@ class NewSnapForm extends React.Component {
 
   submitHandler = e => {
     e.preventDefault()
-    this.getGeoLocation(() => {
-      let data = new FormData()
-      data.append('image', this.state.image)
-      data.append('name', this.state.name)
-      data.append('story', this.state.story)
-      data.append('friendliness', this.state.friendliness)
-      data.append('lat', this.state.lat)
-      data.append('lng', this.state.lng)
-      addSnap(data)
-    })
+    const { image, name, story, friendliness, lat, lng } = this.state
+    if (image === '') {
+      this.setState({
+        message: 'You need to take a photo!'
+      })
+    } else {
+      this.getGeoLocation(() => {
+        let data = new FormData()
+        data.append('image', image)
+        data.append('name', name)
+        data.append('story', story)
+        data.append('friendliness', friendliness)
+        data.append('lat', lat)
+        data.append('lng', lng)
+        addSnap(data)
+      })
+    }
   }
 
   render () {
@@ -126,7 +134,6 @@ class NewSnapForm extends React.Component {
               <Button type="primary">Add snap!</Button>
             </Control>
           </Field>
-
         </form>
         <p>{message}</p>
       </div>
