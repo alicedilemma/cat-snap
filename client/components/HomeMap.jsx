@@ -11,9 +11,9 @@ const InitialMap = withGoogleMap(props => {
     <Marker onClick={() => { props.onMarkerClick(snap) }} key={snap.id} position={ { lat: snap.lat, lng: snap.lng } } >
       {snap.showInfo && (
         <InfoWindow onCloseClick={() => props.onMarkerClose(snap)}>
-        <div>
-          <h1 onClick={() => dispatch(openSnap(snap.id))}>{snap.name}</h1>
-        </div>
+          <div>
+            <h1 onClick={() => dispatch(openSnap(snap.id))}>{snap.name}</h1>
+          </div>
         </InfoWindow>
       )}
 

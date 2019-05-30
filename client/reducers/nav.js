@@ -7,7 +7,6 @@ const initialNavState = {
 
 const navReducer = (state = initialNavState, action) => {
   switch (action.type) {
-
     case NAVIGATE:
       return {
         activePage: action.target,

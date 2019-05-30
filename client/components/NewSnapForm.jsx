@@ -19,7 +19,7 @@ class NewSnapForm extends React.Component {
     image: '',
     lat: '',
     lng: '',
-    cameraDisplay : 'camera' // camera or preview
+    cameraDisplay: 'camera' // camera or preview
   }
 
   getGeoLocation = (callback) => {
@@ -87,10 +87,10 @@ class NewSnapForm extends React.Component {
     const { message, name, story, friendliness, cameraDisplay, image } = this.state
     return (
       <div>
-        {cameraDisplay === 'camera' && <CameraContainer 
+        {cameraDisplay === 'camera' && <CameraContainer
           onTakePhoto={this.onTakePhoto}
         />}
-        {cameraDisplay === 'preview' && <PhotoPreview 
+        {cameraDisplay === 'preview' && <PhotoPreview
           image={image}
           discardPhoto={this.discardPhoto}
         />}

@@ -4,11 +4,11 @@ function PhotoPreview (props) {
   const { image, discardPhoto } = props
   return (
     <div>
-    <img src={image} />
-    <button
-      onClick={discardPhoto}>
+      <img src={image} />
+      <button
+        onClick={discardPhoto}>
       X
-    </button>
+      </button>
     </div>
 
   )
