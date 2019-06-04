@@ -5,11 +5,11 @@ import { connect } from 'react-redux'
 import { Columns } from 'react-bulma-components/full'
 
 // components
-import Home from './Home'
-import Snap from './Snap'
+import Home from './HomeView/Home'
+import Snap from './SnapView/Snap'
 import Header from './Header'
 import Footer from './Footer'
-import NewSnapForm from './NewSnapForm'
+import NewSnapForm from './NewSnapView/NewSnapForm'
 import Register from './Register'
 import SignIn from './SignIn'
 

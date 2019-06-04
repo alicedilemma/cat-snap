@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withGoogleMap, GoogleMap, InfoWindow, Marker } from 'react-google-maps'
 
-import { openSnap } from '../actions'
+import { openSnap } from '../../actions'
 
 const InitialMap = withGoogleMap(props => {
   const { dispatch, snaps } = props

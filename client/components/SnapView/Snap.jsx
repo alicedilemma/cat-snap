@@ -4,7 +4,7 @@ import React from 'react'
 import { Heading } from 'react-bulma-components/full'
 
 // components
-import MapContainer from './MapContainer'
+import MapContainer from '../MapContainer'
 
 class Snap extends React.Component {
   tagsData=[ 'cool', 'grey' ]

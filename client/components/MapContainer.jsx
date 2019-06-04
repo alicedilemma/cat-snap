@@ -1,6 +1,6 @@
 import React from 'react'
 
-import InitialMap from './InitialMap'
+import InitialMap from './HomeView/InitialMap'
 
 class MapContainer extends React.Component {
   state = {

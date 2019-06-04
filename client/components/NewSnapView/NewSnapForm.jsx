@@ -8,7 +8,7 @@ import PhotoPreview from './PhotoPreview'
 import { Form, Button } from 'react-bulma-components/full'
 
 // api
-import { addSnap } from '../api'
+import { addSnap } from '../../api'
 
 class NewSnapForm extends React.Component {
   state = {
