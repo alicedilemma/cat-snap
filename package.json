@@ -35,7 +35,7 @@
     "dotenv-webpack": "^1.7.0",
     "express": "^4.16.4",
     "formidable": "^1.2.1",
-    "knex": "^0.16.3",
+    "knex": "^0.19.5",
     "nodemon": "^1.19.0",
     "react-bulma-components": "^2.3.0",
     "react-google-maps": "^9.4.5",
